@@ -73,7 +73,17 @@ class Polynomial:
     def __str__(self):
         s = ''
         for i in range(len(self.coeff)):
-            s += ' + %g*x^%d' % (self.coeff[i], i)
+            if self.coeff[i] != 0:
+                s += ' + %g*x^%d' % (self.coeff[i], i)
+        s = s.replace('+ -', '- ')
+        s = s.replace('x^0', '1')
+        s = s.replace(' 1*', ' ')
+        s = s.replace('*1', '')
+        s = s.replace('x^1 ', 'x ')
+        if s[0:3] == ' + ':
+            s = s[3:]
+        if s[0:3] == ' - ':
+            s = '-' + s[3:]
         return s
 
 def test_Polynomial():
