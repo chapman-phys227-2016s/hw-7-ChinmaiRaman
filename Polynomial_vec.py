@@ -20,7 +20,6 @@ import sympy as sp
 class Polynomial:
 
     def __init__(self, coefficients):
-        print coefficients.dtype
         if isinstance(coefficients, np.ndarray):
                 self.coeff = coefficients
         else:
