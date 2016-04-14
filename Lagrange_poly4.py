@@ -16,6 +16,7 @@ from __future__ import division
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
+from unittest import TestCase
 
 class LagrangeInterpolation:
 
@@ -62,11 +63,12 @@ class LagrangeInterpolation:
         for k in xrange(len(self.yp)):
             summation += self.L_k(x, k) * self.yp[k]
         return summation
-
-def test_p_L():
-    xp = np.linspace(0, np.pi, 5)
-    yp = np.sin(xp)
-    p_L = LagrangeInterpolation(xp, yp)
-    x = 1.2
-    for i in xrange(len(p_L.yp)):
-        assert(abs(p_L(p_L.xp[i]) - p_L.yp[i]) < 1e-3), 'bug in class LagrangeInterpolation'
+    
+class Test_LagrangeInterpolation(TestCase):
+    def test_p_L(self):
+        xp = np.linspace(0, np.pi, 5)
+        yp = np.sin(xp)
+        p_L = LagrangeInterpolation(xp, yp)
+        x = 1.2
+        for i in xrange(len(p_L.yp)):
+            assert(abs(p_L(p_L.xp[i]) - p_L.yp[i]) < 1e-3), 'bug in class LagrangeInterpolation'
