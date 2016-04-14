@@ -89,25 +89,25 @@ class Polynomial:
 
 class Test_Polynomial(TestCase):
     def test_Polynomial(self):
-        p1 = Polynomial(np.array([1, -1]))
-        p2 = Polynomial(np.array([0, 1, 0, 0, -6, -1]))
+        p1 = Polynomial(np.array([1.0, -1]))
+        p2 = Polynomial(np.array([0.0, 1, 0, 0, -6, -1]))
 
         print p1.coeff.dtype
         print p2.coeff.dtype
 
         p3 = p1 + p2
-        p3_exact = Polynomial(np.array([1, 0, 0, 0, -6, -1]))
+        p3_exact = Polynomial(np.array([1.0, 0, 0, 0, -6, -1]))
         assert np.all(p3.coeff == p3_exact.coeff)
 
         p4 = p1 * p2
-        p4_exact = Polynomial(np.array([0, 1, -1, 0, -6, 5, 1]))
+        p4_exact = Polynomial(np.array([0.0, 1, -1, 0, -6, 5, 1]))
         assert np.allclose(p4.coeff, p4_exact.coeff, rtol = 1e-14)
 
         p5 = p2.derivative()
-        p5_exact = Polynomial(np.array([1, 0, 0, -24, -5]))
+        p5_exact = Polynomial(np.array([1.0, 0, 0, -24, -5]))
         assert np.all(p5.coeff == p5_exact.coeff)
 
-        p6 = Polynomial(np.array([0, 1, 0, 0, -6, -1]))
+        p6 = Polynomial(np.array([0, 1, 0, 0.0, -6, -1]))
         p6.differentiate()
         p6_exact = p5_exact
         assert np.all(p6.coeff == p6_exact.coeff)
