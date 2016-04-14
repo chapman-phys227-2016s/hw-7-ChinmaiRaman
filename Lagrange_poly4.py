@@ -63,7 +63,7 @@ class LagrangeInterpolation:
         for k in xrange(len(self.yp)):
             summation += self.L_k(x, k) * self.yp[k]
         return summation
-    
+
 class Test_LagrangeInterpolation(TestCase):
     def test_p_L(self):
         xp = np.linspace(0, np.pi, 5)
