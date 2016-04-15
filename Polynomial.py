@@ -26,7 +26,7 @@ class Polynomial:
     def __call__(self, x):
         s = 0
         for i in range(len(self.coeff)):
-            s += self.coeffi*x**i
+            s += self.coeff[i]*x**i
         return s
     
     def __add__(self, other):
